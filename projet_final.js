@@ -281,3 +281,18 @@ function achat_ticket() {
         console.log("Ticket acheté avec succès");
     }
 }
+function aff_tickets(){
+    if(tickets.length !== 0){
+        for(let ticket of tickets){
+            console.log("=== TICKETS ===")
+            console.log("id #", ticket.id)
+            console.log("passager", ticket.Nom_du_passager)
+            console.log("trajet", ticket.tripId)
+            console.log("place" , ticket.seatNumber)
+            console.log("prix", ticket.price)
+        }
+    }
+    else if(tickets.length === 0){
+        console.log("aucun ticket pour afficher!!")
+    }
+}
