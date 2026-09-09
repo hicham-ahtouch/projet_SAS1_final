@@ -208,7 +208,7 @@ function main() {
                 achat_ticket();
                 break;
             case 3:
-                //afficher les tickets
+                aff_tickets();
                 break;
             case 4:
                 //annuler les tickets
@@ -286,11 +286,11 @@ function aff_tickets(){
     if(tickets.length !== 0){
         for(let ticket of tickets){
             console.log("=== TICKETS ===")
-            console.log("id #", ticket.id)
-            console.log("passager", ticket.Nom_du_passager)
-            console.log("trajet", ticket.tripId)
-            console.log("place" , ticket.seatNumber)
-            console.log("prix", ticket.price)
+            console.log("Ticket #", ticket.id)
+            console.log("Passager:", ticket.passengerName.toLowerCase())
+            console.log("Trajet:", ticket.tripId)
+            console.log("Place:" , ticket.seatNumber)
+            console.log("Prix:", ticket.price, "DH")
         }
     }
     else if(tickets.length === 0){
