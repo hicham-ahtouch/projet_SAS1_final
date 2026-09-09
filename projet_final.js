@@ -1,3 +1,4 @@
+const prompt = require('prompt-sync')();
 const trips = [
     {
         id: 1,
@@ -180,7 +181,6 @@ const trips = [
         availableSeats: 50
     }
 ];
-var prompt = require("prompt-sync")();
 const tickets = [];
 function main() {
     let user_input;
@@ -225,8 +225,9 @@ function main() {
             case 0:
                 console.log("Merci d'utiliser notre application, BON VOYAGE! ");
                 break;
+            
             default:
-                user_input = Number(prompt("Merci d'entrer une choix valide entre 0 et 7!! ~Appuyez sur une touche pour continuer~"));
+                console.log("S'il-vous-plait entrer une choix valide entre 0 et 7!!");
                 break;
         }
     } while (user_input != 0);
@@ -251,7 +252,7 @@ function achat_ticket() {
     let id_trajet;
     do {
         id_trajet = prompt("entre votre trajet identifiant :")
-    } while (isNaN(id_trajet));
+    } while (isNaN(id_trajet) || id_trajet.trim()=== "" || id_trajet.trim()===" ");
 
     let trajet;
     for (let selectedtrajet of trips) {
