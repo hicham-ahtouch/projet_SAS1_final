@@ -285,15 +285,31 @@ function achat_ticket() {
 function aff_tickets(){
     if(tickets.length !== 0){
         for(let ticket of tickets){
+            let trajet;
+    for(let selectedtrajet of trips){
+        if(selectedtrajet.id === ticket.tripId){
+            trajet = selectedtrajet;
+        }
+    }
             console.log("=== TICKETS ===")
             console.log("Ticket #", ticket.id)
             console.log("Passager:", ticket.passengerName.toLowerCase())
-            console.log("Trajet:", ticket.tripId)
+            console.log("Trajet:", trajet.departure , " → " , trajet.destination)
             console.log("Place:" , ticket.seatNumber)
             console.log("Prix:", ticket.price, "DH")
         }
     }
     else if(tickets.length === 0){
-        console.log("aucun ticket pour afficher!!")
+        console.log("Aucun ticket enregistré!!")
     }
+}
+function annuler_ticket(){
+    let id_ticket;
+    do{
+        id_ticket = prompt("entre votre ticket identifiant: ")
+    }while(isNaN(id_ticket) || id_ticket.trim() === "" || id.ticket.trim() === " ")
+    if(id_ticket === undefined){
+        console.log("ticket introuvable!!")
+    }
+    
 }
