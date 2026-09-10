@@ -211,7 +211,7 @@ function main() {
                 aff_tickets();
                 break;
             case 4:
-                //annuler les tickets
+                annuler_ticket();
                 break;
             case 5:
                 //rechercher un ticket
@@ -307,9 +307,28 @@ function annuler_ticket(){
     let id_ticket;
     do{
         id_ticket = prompt("entre votre ticket identifiant: ")
-    }while(isNaN(id_ticket) || id_ticket.trim() === "" || id.ticket.trim() === " ")
-    if(id_ticket === undefined){
-        console.log("ticket introuvable!!")
+    }while(isNaN(id_ticket) || id_ticket.trim() === "" || id_ticket.trim() === " ")
+
+        let ticket;
+        let ticket_index;
+        for(let i = 0 ; i < tickets.length; i++){
+            if(tickets[i].id === Number(id_ticket)){
+                ticket = tickets[i];
+                ticket_index = i;
+            }
+        }
+        if(ticket === undefined){
+            console.log("ticket introuvable!!")
+        }
+        else{
+            let trajet;
+            for(let selectedtrajet of trips){
+                if(selectedtrajet.id === ticket.tripId){
+                    trajet = selectedtrajet;
+                }
+            }
+            tickets.splice(ticket_index, 1);
+            trajet.availableSeats = trajet.availableSeats + 1;
+            console.log("Ticket annulé avec succès");
+        }
     }
-    
-}
