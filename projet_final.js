@@ -182,6 +182,7 @@ const trips = [
     }
 ];
 const tickets = [];
+let tickets_counter = 1;
 function main() {
     let user_input;
     do {
@@ -267,7 +268,8 @@ function achat_ticket() {
         console.log("Désolé, le train est complet pour ce trajet!!");
     }
     else{
-        let id_ticket = tickets.length + 1 ;
+        let id_ticket = tickets_counter;
+        tickets_counter++;
         let seat_numb = 51 - trajet.availableSeats;
 
         let ticket ={
