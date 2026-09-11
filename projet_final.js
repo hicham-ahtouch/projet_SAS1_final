@@ -274,7 +274,7 @@ function achat_ticket() {
 
         let ticket = {
             id: id_ticket,
-            passengerName: Nom_du_passager,
+            passengerName: Nom_du_passager.toLowerCase(),
             tripId: Number(id_trajet),
             seatNumber: seat_numb,
             price: trajet.price
