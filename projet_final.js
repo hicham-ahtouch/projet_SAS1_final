@@ -218,7 +218,7 @@ function main() {
                 rechercher_un_ticket();
                 break;
             case 6:
-                //filtrer les trajets
+                filtrer_trajet();
                 break;
             case 7:
                 //trier les trajets
@@ -334,16 +334,16 @@ function annuler_ticket() {
         console.log("Ticket annulé avec succès");
     }
 }
-function rechercher_un_ticket(){
+function rechercher_un_ticket() {
     let name = prompt("entre le nom du passager: ").toLowerCase();
     let name_found = false;
-    for(let ticket_search of tickets){
-        if(ticket_search.passengerName === name){
+    for (let ticket_search of tickets) {
+        if (ticket_search.passengerName === name) {
             name_found = true;
-            
+
             let trajet;
-            for(let trajet_search of trips){
-                if(trajet_search.id === ticket_search.tripId){
+            for (let trajet_search of trips) {
+                if (trajet_search.id === ticket_search.tripId) {
                     trajet = trajet_search;
                 }
             }
@@ -355,7 +355,24 @@ function rechercher_un_ticket(){
             console.log("Prix: ", ticket_search.price, "DH")
         }
     }
-    if(name_found === false){
+    if (name_found === false) {
         console.log("Désole, aucun ticket ne correspond au nom que vous avez donné");
+    }
+}
+function filtrer_trajet() {
+    let depart_ville;
+    do{
+        depart_ville = prompt("entre la ville de depart: ");
+    }while(depart_ville.trim() === "" || depart_ville.trim() === " ");
+    let ville_trouve = false
+    for (let ville_search of trips) {
+        if (ville_search.departure.toLowerCase() === depart_ville.toLowerCase()) {
+            ville_trouve = true;
+            console.log("Résultat :");
+            console.log(ville_search.departure + " → "+ ville_search.destination + " : " + ville_search.price + " DH");
+        }
+    }
+    if(ville_trouve === false){
+        console.log("ville indisponible sur notre trajet");
     }
 }
