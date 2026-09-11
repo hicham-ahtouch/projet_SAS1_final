@@ -221,7 +221,7 @@ function main() {
                 filtrer_trajet();
                 break;
             case 7:
-                //trier les trajets
+                trier_trajet();
                 break;
             case 0:
                 console.log("Merci d'utiliser notre application, BON VOYAGE! ");
@@ -374,5 +374,23 @@ function filtrer_trajet() {
     }
     if(ville_trouve === false){
         console.log("ville indisponible sur notre trajet");
+    }
+}
+function trier_trajet(){
+    let trip_sort = [];
+    for(let trajet of trips){
+        trip_sort.push(trajet);
+    }
+    for(let i = 0; i < trip_sort.length ; i++){
+        for(let j = 0; j < trip_sort.length- 1 ; j++){
+            if(trip_sort[j].price > trip_sort[j+1].price){
+                let swap = trip_sort[j];
+                trip_sort[j] = trip_sort[j+1];
+                trip_sort[j+1] = swap;
+            }
+        }
+    }
+    for(let trajet of trip_sort){
+        console.log(trajet.departure + " → " + trajet.destination + " : " + trajet.price + " DH");
     }
 }
